@@ -7,7 +7,7 @@ import {checkLogin} from './redux/auth/action';
 
 import SignInScreen from './screens/signIn/index';
 import LoadingScreen from './screens/loading/index';
-import LayoutScreen from './screens/layout/index';
+import MainStack from './MainStack';
 
 const Stack = createStackNavigator();
 const tokenKey = 'tokenKey';
@@ -31,7 +31,7 @@ const MyStack = () => {
                 </Stack.Navigator>
             ) : (
                 <Stack.Navigator headerMode='none'>
-                    <Stack.Screen name='LayoutScreen' component={LayoutScreen}/>
+                    <Stack.Screen name='MainStack' component={MainStack}/>
                 </Stack.Navigator>
             )}
         </NavigationContainer>
