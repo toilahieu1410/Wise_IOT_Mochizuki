@@ -8,6 +8,8 @@ target 'Wise_Iot_Mochizuki' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'Wise_Iot_MochizukiTests' do
     inherit! :complete
     # Pods for testing

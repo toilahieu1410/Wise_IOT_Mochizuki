@@ -1,12 +1,14 @@
 
 import React from 'react';
-import {View} from 'react-native';
-
+import MyStack from './AppNavigator';
+import {Provider} from 'react-redux';
+import store from './redux/index';
 const App = () => {
   return (
-    <View>
+    <Provider store={store}>
+      <MyStack/>
+    </Provider>
 
-    </View>
   );
 };
 
