@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Container, Content, DatePicker, Text } from 'native-base';
 
 const datePicker = ({onPress}) => {
-    // const [date, setDate] = useState('14/10/2020');
-    // const dateTime = moment(date).format('DD/MM/YYYY');
-    // console.log(dateTime);
+
     return (
-        <Container>
-        <Content>
+  
           <DatePicker
             defaultDate={new Date()}
             minimumDate={new Date(2019, 1, 1)}
@@ -23,10 +20,7 @@ const datePicker = ({onPress}) => {
             onDateChange={onPress}
             disabled={false}
             />
-            <Text>
-            </Text>
-        </Content>
-      </Container>
+
     )
 }
 export default datePicker;
