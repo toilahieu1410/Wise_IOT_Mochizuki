@@ -9,6 +9,12 @@ import Weekly from './screens/chart/weekly';
 import Monthly from './screens/chart/monthly';
 import Quantity from './screens/chart/quantity';
 
+import ReportShift from './screens/report/reportShift';
+import ReportHour from './screens/report/reportHour';
+import ReportDaily from './screens/report/reportDaily';
+import ReportWeekly from './screens/report/reportWeekly';
+import ReportMonthly from './screens/report/reportMonthly';
+
 const Stack = createStackNavigator();
 const theme = {
     ...DefaultTheme,
@@ -28,6 +34,12 @@ const MainStack = () => {
             <Stack.Screen name='Weekly' component={Weekly}/>
             <Stack.Screen name='Monthly' component={Monthly}/>
             <Stack.Screen name='Quantity' component={Quantity}/>
+
+            <Stack.Screen name='ReportShift' component={ReportShift}/>
+            <Stack.Screen name='ReportHour' component={ReportHour}/>
+            <Stack.Screen name='ReportDaily' component={ReportDaily}/>
+            <Stack.Screen name='ReportWeekly' component={ReportWeekly}/>
+            <Stack.Screen name='ReportMonthly' component={ReportMonthly}/>
         </Stack.Navigator>
         </PaperProvider>
     )

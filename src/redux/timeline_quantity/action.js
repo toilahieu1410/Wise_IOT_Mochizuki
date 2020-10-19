@@ -8,7 +8,6 @@ export const getApiQuantityChart = (dateTime, mcid) => async dispatch => {
     try {
         callApiQuantityChart(dateTime, mcid)
         .then(function(res) {
-            console.log(res);
             return dispatch({type: TIMELINE_QUANTITY_SUCCESS, timeline_quantity: res})
         })
     } catch (error) {

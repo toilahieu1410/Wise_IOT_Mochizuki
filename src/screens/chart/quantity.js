@@ -12,7 +12,6 @@ const quantity = ({navigation}) => {
     const [date, setDate] = useState(new Date());
     const [mcid, setMcid] = useState(1);
     const dateTime = moment(date).format('DD/MM/YYYY');
-console.log(listTimelineQuantity)
     useEffect(() => {
         dispatch(getApiQuantityChart(dateTime, mcid))
     }, [dateTime])
