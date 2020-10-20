@@ -14,6 +14,7 @@ import ReportHour from './screens/report/reportHour';
 import ReportDaily from './screens/report/reportDaily';
 import ReportWeekly from './screens/report/reportWeekly';
 import ReportMonthly from './screens/report/reportMonthly';
+import ListStatus from './screens/listStatus/index';
 
 const Stack = createStackNavigator();
 const theme = {
@@ -40,6 +41,8 @@ const MainStack = () => {
             <Stack.Screen name='ReportDaily' component={ReportDaily}/>
             <Stack.Screen name='ReportWeekly' component={ReportWeekly}/>
             <Stack.Screen name='ReportMonthly' component={ReportMonthly}/>
+
+            <Stack.Screen name='ListStatus' component={ListStatus}/>
         </Stack.Navigator>
         </PaperProvider>
     )

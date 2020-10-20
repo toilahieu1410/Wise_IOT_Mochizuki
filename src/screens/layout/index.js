@@ -6,13 +6,11 @@ import { Appbar, Button } from 'react-native-paper';
 
 import ItemLayout from '../../components/layout/item';
 
-const LayoutScreen = () => {
+const LayoutScreen = ({navigation}) => {
     const dispatch = useDispatch();
     //get data
     const listLayout = useSelector((store) => store.layout.listLayout);
-
     const [page, setPage] = useState(1);
-
     useEffect(() => {
         const interval = setInterval(() => {
             dispatch(getApiLayout(page))
@@ -27,7 +25,7 @@ const LayoutScreen = () => {
         <View style={styles.container}>
            <Appbar.Header>
                 <Appbar.Content title="Layout"/>
-                <Appbar.Action icon='dots-vertical' onPress={() => {}} />
+                <Appbar.Action icon='table' onPress={() => {navigation.navigate('ListStatus')}} />
             </Appbar.Header>
             <FlatList
             data = {listLayout}
