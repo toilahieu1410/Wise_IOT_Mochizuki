@@ -158,11 +158,5 @@ const styles = StyleSheet.create({
     homeLayout: {
         padding:15,
     },
-    circle: {
-        width: 20,
-        height: 20,
-        borderRadius: 44/2,
-        backgroundColor: 'red'
-    },
 })
 

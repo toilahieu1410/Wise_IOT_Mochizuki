@@ -15,6 +15,7 @@ export const getApiLiveBoardTime = (mcid) => async dispatch => {
             return dispatch({type: LIVE_TIME_SUCCESS, liveBoardTime: res})
         })
     } catch (error) {
+        console.log('error:' + error)
         return dispatch({type: LIVE_TIME_ERROR, error});
     }
 };
