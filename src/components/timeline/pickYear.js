@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {Picker, Form, Icon} from 'native-base';
 
 const PickYear = ({year, setYear}) => {
