@@ -6,19 +6,24 @@ import { Appbar, Button } from 'react-native-paper';
 import PickYear from '../../components/timeline/pickYear';
 import PickDevices from '../../components/timeline/pickMcid';
 import StackedBarCharts from '../../components/timeline/stackedBarChart';
+import { compose } from 'redux';
 
 const weekly = ({navigation}) => {
 const dispatch = useDispatch();
 const listTimelineWeekly = useSelector((store) => store.timeline_weekly.listTimelineWeekly);
-const [year, setYear] = useState(2020);
+const today = new Date();
+const years = today.getFullYear();
+const [year, setYear] = useState(String(years));
 const [mcid, setMcid] = useState(1)
 
 useEffect(() => {
     dispatch(getApiWeeklyChart(year, mcid));
 }, [year, mcid]);
-    const data = listTimelineWeekly;
-    const colors = [ 'green', 'red', 'yellow', 'gray', 'white', 'blue', 'pink' ]
-    const keys   = [ 'TIME_GREEN', 'TIME_RED', 'TIME_YELLOW', 'TIME_OFF', 'TIME_ERROR', 'TIME_BREAK', 'TIME_CHANGE_MOLD']
+
+    const data = listTimelineWeekly[0].data;
+
+    const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
+    const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
     const dataY = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000];
     return (
         <View style={styles.container}>
@@ -41,7 +46,7 @@ useEffect(() => {
             colors={colors}
             data={data}
             dataY={dataY}/>
-          </ScrollView>
+            </ScrollView>
         </View>
     )
 }
