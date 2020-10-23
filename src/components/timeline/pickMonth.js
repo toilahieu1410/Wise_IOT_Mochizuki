@@ -2,8 +2,10 @@ import React from 'react';
 import {Picker, Form, Icon} from 'native-base';
 
 const PickMonth = ({month, setMonth}) => {
-
+    const today = new Date();
+    const months = today.getMonth();
     const listMonth = [
+        {value: String(months + 1), label: String(months + 1)},
         {value: '1', label: '1'},
         {value: '2', label: '2'},
         {value: '3', label: '3'},
