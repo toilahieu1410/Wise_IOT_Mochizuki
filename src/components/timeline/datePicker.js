@@ -4,7 +4,6 @@ import { Container, Content, DatePicker, Text } from 'native-base';
 const datePicker = ({onPress}) => {
 
     return (
-  
           <DatePicker
             defaultDate={new Date()}
             minimumDate={new Date(2019, 1, 1)}
