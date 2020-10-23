@@ -24,7 +24,7 @@ function checkQty(upTime, percentTarget){
             </View>
         )
     }
-    if(upTime > percentTarget) {
+    if(upTime >= percentTarget) {
         return (
             <View style={styles.circle}>
                 <Text style={{width:70, height:70,borderRadius:140/2, 

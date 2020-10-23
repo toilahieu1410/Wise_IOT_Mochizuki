@@ -10,6 +10,10 @@ target 'Wise_Iot_Mochizuki' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'RNCPicker', :path => '../node_modules/@react-native-community/picker'
+
   target 'Wise_Iot_MochizukiTests' do
     inherit! :complete
     # Pods for testing

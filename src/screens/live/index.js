@@ -29,7 +29,6 @@ const LiveScreen = () => {
         <View style={styles.container}>
             <Toolbar
             centerElement = 'Live Board'
-            backgroundColor = 'red'
             rightElement={{
                 menu: {
                     icon: "more-vert",
