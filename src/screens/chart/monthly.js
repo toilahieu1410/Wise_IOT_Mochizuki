@@ -9,8 +9,10 @@ import PickDevices from '../../components/timeline/pickMcid';
 
 const monthly = ({navigation}) => {
     const dispatch = useDispatch();
+    const today = new Date();
+    const months = today.getMonth();
     const [year, setYear] = useState(2020);
-    const [month, setMonth] = useState(10);
+    const [month, setMonth] = useState(months + 1);
     const [mcid, setMcid] = useState(1);
     const listTimelineMonthly = useSelector((store) => store.timeline_monthly.listTimelineMonthly);
 
