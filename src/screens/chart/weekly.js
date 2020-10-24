@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiWeeklyChart} from '../../redux/timeline_weekly/action';
@@ -6,25 +6,32 @@ import { Appbar, Button } from 'react-native-paper';
 import PickYear from '../../components/timeline/pickYear';
 import PickDevices from '../../components/timeline/pickMcid';
 import StackedBarCharts from '../../components/timeline/stackedBarChart';
-import { compose } from 'redux';
 
+const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
+const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
+const dataY = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000];
 const weekly = ({navigation}) => {
-const dispatch = useDispatch();
-const listTimelineWeekly = useSelector((store) => store.timeline_weekly.listTimelineWeekly);
-const today = new Date();
-const years = today.getFullYear();
-const [year, setYear] = useState(String(years));
-const [mcid, setMcid] = useState(1)
+  const dispatch = useDispatch();
+  const listTimelineWeekly = useSelector((store) => store.timeline_weekly.listTimelineWeekly);
+  const today = new Date();
+  const years = today.getFullYear();
+  const [year, setYear] = useState(String(years));
+  const [mcid, setMcid] = useState(1)
 
-useEffect(() => {
-    dispatch(getApiWeeklyChart(year, mcid));
-}, [year, mcid]);
+  useEffect(() => {
+      dispatch(getApiWeeklyChart(year, mcid));
+  }, [year, mcid]);
 
-    const data = listTimelineWeekly[0].data;
+  // Su dung useMemo
+  const data = useMemo(() => {
+    if(listTimelineWeekly.length === 0 ){
+      return null
+    }
+    return listTimelineWeekly[0].data
+  }, [listTimelineWeekly]);
 
-    const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
-    const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
-    const dataY = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000];
+  if(data === null) return null;
+
     return (
         <View style={styles.container}>
           <ScrollView>
@@ -45,7 +52,8 @@ useEffect(() => {
             keys={keys}
             colors={colors}
             data={data}
-            dataY={dataY}/>
+            dataY={dataY}
+            horizontal={false}/>
             </ScrollView>
         </View>
     )
