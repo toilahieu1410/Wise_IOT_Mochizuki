@@ -1,13 +1,19 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
+import {useDispatch, useSelector} from 'react-redux';
+import { logOut} from '../../redux/auth/action';
 
 const ReportScreen = ({navigation}) => {
+    const dispatch = useDispatch();
+    const profile = useSelector((store) => store.auth.isLoggedIn);
+    const accountUse = useSelector((store) => store.auth.accountUse);
+
     return (
         <View style={styles.container}>
             <Appbar.Header>
                 <Appbar.Content title="Report"/>
-                <Appbar.Action icon='dots-vertical' onPress={() => {}} />
+                <Appbar.Action icon='logout' onPress={() => dispatch(logOut())} />
             </Appbar.Header>
 
         <Button

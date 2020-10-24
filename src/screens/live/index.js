@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import {getApiLiveBoardTime ,getApiLast5Day} from '../../redux/liveBoard/action';
@@ -27,26 +27,30 @@ const LiveScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Toolbar
-            centerElement = 'Live Board'
-            rightElement={{
-                menu: {
-                    icon: "more-vert",
-                    labels: ["PM07", "PM09", "PM01"]
+            <ScrollView>
+            <View style={styles.toolBar}>
+                <Toolbar
+                centerElement = 'Live Board'
+                rightElement={{
+                    menu: {
+                        icon: "more-vert",
+                        labels: ["PM07", "PM09", "PM01"]
+                    }
+                }}
+                onRightElementPress={ (label) => {
+                if(label.index === 0) {
+                    setMcid(1)
                 }
-            }}
-            onRightElementPress={ (label) => {
-            if(label.index === 0) {
-                setMcid(1)
-            }
-            if(label.index === 1){
-                setMcid(2)
-            }
-            if(label.index === 2){
-                setMcid(3)
-            }
-            }}
-            />
+                if(label.index === 1){
+                    setMcid(2)
+                }
+                if(label.index === 2){
+                    setMcid(3)
+                }
+                }}
+                />
+            </View>
+            
 
         <View style={styles.body}>
         <FlatList
@@ -71,6 +75,7 @@ const LiveScreen = () => {
         />}
         />
         </View>
+        </ScrollView>
         </View>
     )
 }
