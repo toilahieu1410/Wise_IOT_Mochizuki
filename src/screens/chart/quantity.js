@@ -8,6 +8,7 @@ import moment from 'moment';
 import BarCharts from '../../components/timeline/barChart';
 import PickDevices from '../../components/timeline/pickMcid';
 
+const dataX = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5];
 const quantity = ({navigation}) => {
     const dispatch = useDispatch();
     const listTimelineQuantity = useSelector((store) => store.timeline_quantity.listTimelineQuantity);
@@ -19,7 +20,7 @@ const quantity = ({navigation}) => {
     }, [mcid, dateTime])
 
     const data = listTimelineQuantity;
-    const dataX = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5];
+    
 
     return (
         <View style={styles.container}>

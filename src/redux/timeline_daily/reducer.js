@@ -8,6 +8,7 @@ import {REQUEST_TIMELINE,
 const initialState = {
     listTimeline: [],
     listTimelineDaily: [],
+    listDataSTD: [],
     isLoading: false,
     err: null
 }
@@ -40,7 +41,8 @@ const timeline_daily = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                listTimelineDaily: action.timeline_daily
+                listTimelineDaily: action.timeline_daily,
+                listDataSTD: action.dataSTD
             }
         case TIMELINE_DAILY_ERROR:
             return {

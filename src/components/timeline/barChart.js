@@ -13,7 +13,7 @@ const BarCharts = ({data, dataX}) => {
                 fill: 'grey',
                 fontSize: 10,
             }}
-            numberOfTicks={10}
+            numberOfTicks={5}
             formatLabel={(value) => `${value}`}
             />
             <View style={{flex: 1}}>

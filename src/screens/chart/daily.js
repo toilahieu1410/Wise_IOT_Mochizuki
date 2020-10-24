@@ -1,19 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import DatePicker from '../../components/timeline/datePicker';
 import {getApiTimeline, getApiDailyChart} from '../../redux/timeline_daily/action';
 import moment from 'moment';
-import PickDevices from '../../components/timeline/pickMcid';
 import StackedBarCharts from '../../components/timeline/stackedBarChart';
 import LineCharts from '../../components/timeline/lineChart';
+import PickDevices from '../../components/timeline/pickMcid';
+
+const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
+const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
+const dataY = [10,20,30,40,50,60];
+const dataX = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5];
+
 
 const daily = ({navigation}) => {
     const dispatch = useDispatch();
-    // Timeline
-    const listTimeline = useSelector((store) => store.timeline_daily.listTimeline);
+    // Timeline  
+    // const listTimeline = useSelector((store) => store.timeline_daily.listTimeline);
     const listTimelineDaily = useSelector((store) => store.timeline_daily.listTimelineDaily);
+    const listDataSTD = useSelector((store) => store.timeline_daily.listDataSTD);
 
     // Chart Daily
     const [date, setDate] = useState(new Date());
@@ -26,42 +33,15 @@ const daily = ({navigation}) => {
         dispatch(getApiTimeline(dateTime, start, end));
         dispatch(getApiDailyChart(dateTime, mcid));
     }, [mcid, dateTime])
-    const dataLineChart = [50, 10, 40];
-    const dataX = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5];
-    const dataY = [0,20,40,60]
-    const data = [
-        {
-            month: new Date(2015, 0, 1),
-            apples: 3840,
-            bananas: 1920,
-            cherries: 960,
-            dates: 400,
-            oranges: 400,
-        },
-        {
-            month: new Date(2015, 1, 1),
-            apples: 1600,
-            bananas: 1440,
-            cherries: 960,
-            dates: 400,
-        },
-        {
-            month: new Date(2015, 2, 1),
-            apples: 640,
-            bananas: 960,
-            cherries: 3640,
-            dates: 400,
-        },
-        {
-            month: new Date(2015, 3, 1),
-            apples: 3320,
-            bananas: 480,
-            cherries: 640,
-            dates: 400,
-        },
-    ]
-    const colors = [ '#7b4173', '#a55194', '#ce6dbd', '#de9ed6' ]
-    const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
+
+    const data = useMemo(() => {
+        if(listTimelineDaily.length ===0){
+            return null;
+        }
+        return listTimelineDaily[0].data;
+    }, [listTimelineDaily]);
+    if(data === null) return null;
+
     return (
         <View style={styles.container}>
              <ScrollView>
@@ -79,12 +59,12 @@ const daily = ({navigation}) => {
             keys={keys}
             colors={colors}
             data={data}
-            dataX={dataX}
             dataY={dataY}
+            horizontal={false}
             >
-            <LineCharts dataLineChart={dataLineChart}/>
-            </StackedBarCharts>
             
+            </StackedBarCharts>
+            {/* <LineCharts dataLineChart={listDataSTD}/> */}
             </ScrollView>
         </View>
     )
