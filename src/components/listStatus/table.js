@@ -16,24 +16,24 @@ const ListTable = ({WDT_USERNAME, COUNT_SHIFT_GREEN, COUNT_SHIFT_YELLOW, COUNT_S
     COUNT_SHIFT_BREAK, COUNT_SHIFT_CHANGE_MOLD, COUNT_SHIFT_RED, COUNT_SHIFT_OFF, uptime, CURRENT_STATE}) => {
         
     return (
-            <DataTable.Row>
+        <DataTable.Row style={styles.container}>
             {checkData(CURRENT_STATE, WDT_USERNAME)}
-            <DataTable.Cell numeric>{COUNT_SHIFT_GREEN}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_YELLOW}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_ERROR}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_BREAK}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_CHANGE_MOLD}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_RED}</DataTable.Cell>
-            <DataTable.Cell numeric>{COUNT_SHIFT_OFF}</DataTable.Cell>
-            <DataTable.Cell numeric>{uptime}</DataTable.Cell>
-            
-            </DataTable.Row>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_GREEN}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_YELLOW}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_ERROR}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_BREAK}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_CHANGE_MOLD}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_RED}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_OFF}</Text></DataTable.Cell>
+            <DataTable.Cell numeric><Text style={{color:'#fff'}}>{uptime}</Text></DataTable.Cell>
+        </DataTable.Row>
     )}
 export default ListTable;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        borderBottomColor:'#ffffff54',
     },
     
 })

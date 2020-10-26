@@ -71,16 +71,16 @@ const daily = ({navigation}) => {
             </Appbar.Header>
             <DatePicker onPress={(text) => setDate(text)}/>
             <PickDevices
-            devices={mcid}
-            setDevices={setMcid}
+                devices={mcid}
+                setDevices={setMcid}
             />
             <Text style={styles.title}>{mcid}</Text>
             <StackedBarCharts
-            keys={keys}
-            colors={colors}
-            data={data}
-            dataX={dataX}
-            dataY={dataY}
+                keys={keys}
+                colors={colors}
+                data={data}
+                dataX={dataX}
+                dataY={dataY}
             >
             <LineCharts dataLineChart={dataLineChart}/>
             </StackedBarCharts>

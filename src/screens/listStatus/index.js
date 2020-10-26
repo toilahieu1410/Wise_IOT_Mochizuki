@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiLayout} from '../../redux/layout/action';
-import {View, Text, StyleSheet, FlatList} from 'react-native'
+import {View, Text, StyleSheet, FlatList,ImageBackground,ScrollView} from 'react-native'
 import { Appbar, Button, DataTable, Modal,  } from 'react-native-paper';
+import backgroundScreen from '../../publics/images/background.png';
 import ListTable from '../../components/listStatus/table';
 
 const ListStatus = ({navigation}) => {
@@ -20,27 +21,31 @@ const ListStatus = ({navigation}) => {
         return () => clearInterval(interval);
     }, [page])
     return (
+        <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
             <Appbar.Header>
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="List Status"/>
             </Appbar.Header>
-            <DataTable>
-            <DataTable.Header>
-            <DataTable.Title>Name</DataTable.Title>
-            <DataTable.Title numeric>Run</DataTable.Title>
-            <DataTable.Title numeric>Misu</DataTable.Title>
-            <DataTable.Title numeric>Kasu</DataTable.Title>
-            <DataTable.Title numeric>Misu+Kasu</DataTable.Title>
-            <DataTable.Title numeric>Change</DataTable.Title>
-            <DataTable.Title numeric>Wait</DataTable.Title>
-            <DataTable.Title numeric>Off</DataTable.Title>
-            <DataTable.Title numeric>UpTime</DataTable.Title>
+            <ScrollView style={{ flex: 1 }}>
+            <DataTable style={styles.dataTable}>
+            <DataTable.Header style={{borderBottomColor:'#fff'}}>
+            <DataTable.Title ><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Run</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Misu</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Kasu</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Misu+Kasu</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Change</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
+            <DataTable.Title numeric><Text style={{color:'#fff'}}>UpTime</Text></DataTable.Title>
+            
             </DataTable.Header>
 
             <FlatList
             data={listLayout}
             renderItem={({item}) => <ListTable
+        
             WDT_USERNAME={item.WDT_USERNAME}
             COUNT_SHIFT_GREEN={item.COUNT_SHIFT_GREEN}
             COUNT_SHIFT_YELLOW={item.COUNT_SHIFT_YELLOW}
@@ -55,17 +60,39 @@ const ListStatus = ({navigation}) => {
             />
 
         </DataTable>
-
+        </ScrollView>
+  
         <Modal visible={visible} onDismiss={hideModal}>
           <Text>Example Modal</Text>
         </Modal>
         </View>
+        </ImageBackground>
     )
 }
 
 export default ListStatus;
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        backgroundColor: '#282f3ac7',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+
+    },
+    picture: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover',
+
+    },
+    dataTable: {
+        minWidth: 650,
+        overflow:'scroll',
+        borderWidth: 1,
+        borderColor: '#ffffff54',
+        margin: 10,
     }
 })

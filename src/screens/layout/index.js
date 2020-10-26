@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiLayout} from '../../redux/layout/action';
-import {View, Text, StyleSheet, FlatList} from 'react-native'
+import {View, Text, StyleSheet, FlatList,ImageBackground} from 'react-native'
 import { Appbar, Button } from 'react-native-paper';
-
+import backgroundScreen from '../../publics/images/background.png';
 import ItemLayout from '../../components/layout/item';
 
 const LayoutScreen = ({navigation}) => {
@@ -22,11 +22,14 @@ const LayoutScreen = ({navigation}) => {
         return new Date(time * 1000).toISOString().substr(11, 8)
     }
     return (
+        <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
+              
            <Appbar.Header>
                 <Appbar.Content title="Layout"/>
                 <Appbar.Action icon='table' onPress={() => {navigation.navigate('ListStatus')}} />
             </Appbar.Header>
+        
             <FlatList
             data = {listLayout}
             renderItem={({item}) => <ItemLayout
@@ -48,6 +51,7 @@ const LayoutScreen = ({navigation}) => {
             />}
             />
         </View>
+        </ImageBackground>
     )
 }
 
@@ -55,6 +59,26 @@ export default LayoutScreen;
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#282f3ac7',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        position: 'absolute'
+    },
+    picture: {
         flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover',
+
+    },
+    opacity: {
+        backgroundColor: '#282f3ac7',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        position: 'absolute'
     }
 })
