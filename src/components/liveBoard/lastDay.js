@@ -9,9 +9,12 @@ const ItemLastDay = ({TEN_NGAY, TIME_GREEN, uptime}) => {
                 <View style={styles.flex}>
                     <Text style={styles.title}>{TEN_NGAY}</Text>
                     <Text style={styles.value}>{TIME_GREEN}</Text>
+                    <View style={styles.percent}>
+
+                    </View>
                     <Text style={styles.value}>{uptime}%</Text>
                 </View>
-                <ProgressBar progress={uptime / 100} />
+                <ProgressBar progress={uptime / 100} style={styles.progressBar}/>
             </View>
         </View>
     )
@@ -22,7 +25,8 @@ const styles = StyleSheet.create({
     value: {
         marginRight: 5,
         fontSize: 22,
-        marginLeft: 20
+        marginLeft: 20,
+        color:'#fff',
     },
     homeLayout: {
         padding:15,
@@ -37,5 +41,13 @@ const styles = StyleSheet.create({
         textAlign:'left',
         marginLeft: 5,
         fontSize: 22,
+    },
+    progressBar: {
+        backgroundColor:'gray',
+        flex: 1,
+        borderRadius:20,
+        height:5,
+        marginBottom:15,
+        color:'#fff'
     },
 })

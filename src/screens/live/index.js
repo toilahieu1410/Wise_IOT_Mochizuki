@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react';
+<<<<<<< Updated upstream
 import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
+=======
+import {View, Text, StyleSheet, FlatList,ImageBackground} from 'react-native';
+>>>>>>> Stashed changes
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import {getApiLiveBoardTime ,getApiLast5Day} from '../../redux/liveBoard/action';
+import backgroundScreen from '../../publics/images/background.png';
 import Live from '../../components/liveBoard/live';
 import ItemLastDay from '../../components/liveBoard/lastDay';
 import { Toolbar } from 'react-native-material-ui';
@@ -26,6 +31,7 @@ const LiveScreen = () => {
     }
 
     return (
+        <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
             <ScrollView>
             <View style={styles.toolBar}>
@@ -67,16 +73,17 @@ const LiveScreen = () => {
         />
 
         <FlatList
-        data={listLiveBoardLastDay}
-        renderItem={({item}) => <ItemLastDay
-        TEN_NGAY={item.TEN_NGAY}
-        TIME_GREEN={item.TIME_GREEN}
-        uptime={item.uptime}
+            data={listLiveBoardLastDay}
+            renderItem={({item}) => <ItemLastDay
+            TEN_NGAY={item.TEN_NGAY}
+            TIME_GREEN={convertTime(item.TIME_GREEN)}
+            uptime={item.uptime}
         />}
         />
         </View>
         </ScrollView>
         </View>
+        </ImageBackground>
     )
 }
 
@@ -88,10 +95,16 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1,
-        justifyContent:'space-evenly',
-        alignItems: 'center',
-        backgroundColor: '#736a6a82',
+        margin:10,
+        borderRadius:10,
+        backgroundColor: '#282f3ac7',
         
     },
-    
+    picture: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover',
+
+    },
 })
