@@ -3,7 +3,7 @@ import {View, StyleSheet } from 'react-native';
 import { StackedBarChart , XAxis,YAxis, Grid } from 'react-native-svg-charts';
 import * as scale from 'd3-scale';
 
-const StackedBarCharts = ({data, keys, colors, dataY}) => {
+const StackedBarCharts = ({data, keys, colors, dataY, horizontal}) => {
     return (
         <View style={styles.chart}>
             <YAxis
@@ -19,6 +19,7 @@ const StackedBarCharts = ({data, keys, colors, dataY}) => {
             <View style={{flex: 1}}>
             <StackedBarChart
             style={ { height: 400 } }
+            horizontal ={horizontal}
             keys={ keys }
             colors={ colors }
             data={ data }
@@ -26,7 +27,6 @@ const StackedBarCharts = ({data, keys, colors, dataY}) => {
             contentInset={ { top: 30, bottom: 30 } }>
                 <Grid direction={Grid.Direction.HORIZONTAL}/>
             </StackedBarChart>
-
             </View>
         </View>
     )

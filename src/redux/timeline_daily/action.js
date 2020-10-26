@@ -23,7 +23,11 @@ export const getApiDailyChart = (dateTime, mcid) => async dispatch => {
     try {
         callApiDailyChart(dateTime, mcid)
         .then(function(res) {
-            return dispatch({type: TIMELINE_DAILY_SUCCESS, timeline_daily: res})
+            let dataSTD = [];
+            for(let item = 0; item < res[0].data.length; item ++){
+                dataSTD.push(res[0].data[item].UPTIME_STD);
+            }
+            return dispatch({type: TIMELINE_DAILY_SUCCESS, timeline_daily: res, dataSTD: dataSTD})
         })
     } catch (error) {
         return dispatch({type: TIMELINE_DAILY_ERROR, error});

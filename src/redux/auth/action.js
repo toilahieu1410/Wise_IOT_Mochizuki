@@ -47,5 +47,10 @@ const restoreAuthStateFromStorage = async () => {
     } catch (error) {
         return false;
     }
+};
+
+export const logOut = () => async dispatch => {
+    await AsyncStorage.removeItem(tokenKey);
+    dispatch({type: LOGOUT})
 }
 

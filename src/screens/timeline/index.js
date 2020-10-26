@@ -9,9 +9,15 @@ const TimelineScreen = ({navigation}) => {
         <View style={styles.container}>
             <Appbar.Header>
                 <Appbar.Content title="TimeLine"/>
-                <Appbar.Action icon='dots-vertical' onPress={() => {}} />
             </Appbar.Header>
-
+            <Button
+                icon="view-grid-plus-outline"
+                mode="contained"
+                style={styles.button}
+                onPress={() => navigation.navigate('Quantity')}>
+                Quantity
+            </Button>
+            
             <Button
                 icon="view-grid-plus-outline"
                 mode="contained"
@@ -34,14 +40,6 @@ const TimelineScreen = ({navigation}) => {
                 style={styles.button}
                 onPress={() => navigation.navigate('Monthly')}>
                 Monthly
-            </Button>
-
-            <Button
-                icon="view-grid-plus-outline"
-                mode="contained"
-                style={styles.button}
-                onPress={() => navigation.navigate('Quantity')}>
-                Quantity
             </Button>
 
         </View>
