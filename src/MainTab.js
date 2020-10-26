@@ -13,7 +13,9 @@ const MainTab = () => {
     return (
         <Tab.Navigator
         initialRouteName='LayoutScreen'
-        tabBarOptions={{activeTintColor: '#0b4645db',}}>
+        shifting={true}
+        tabBarOptions={{activeTintColor: '#0b4645db', inactiveTintColor: 'gray', style: { backgroundColor: 'white'}}}
+        >
 
             <Tab.Screen
             name="LayoutScreen"
