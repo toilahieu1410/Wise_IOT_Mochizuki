@@ -5,7 +5,10 @@ import {View, Text, StyleSheet, FlatList,ImageBackground,ScrollView} from 'react
 import { Appbar, Button, DataTable, Modal,  } from 'react-native-paper';
 import backgroundScreen from '../../publics/images/background.png';
 import ListTable from '../../components/listStatus/table';
+import { Dimensions } from "react-native";
+import { autoType } from 'd3';
 
+var width = Dimensions.get('window').width; //full width
 const ListStatus = ({navigation}) => {
     const dispatch = useDispatch();
     const listLayout = useSelector((store) => store.layout.listLayout);
@@ -27,7 +30,7 @@ const ListStatus = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="List Status"/>
             </Appbar.Header>
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView  horizontal={true} > 
             <DataTable style={styles.dataTable}>
             <DataTable.Header style={{borderBottomColor:'#fff'}}>
             <DataTable.Title ><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
@@ -89,10 +92,10 @@ const styles = StyleSheet.create({
 
     },
     dataTable: {
-        minWidth: 650,
         overflow:'scroll',
-        borderWidth: 1,
+        width:width,
         borderColor: '#ffffff54',
-        margin: 10,
+      
+   
     }
 })
