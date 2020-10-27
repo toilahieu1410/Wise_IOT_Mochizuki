@@ -29,7 +29,6 @@ const LayoutScreen = ({navigation}) => {
                 <Appbar.Content title="Layout"/>
                 <Appbar.Action icon='table' onPress={() => {navigation.navigate('ListStatus')}} />
             </Appbar.Header>
-        
             <FlatList
             data = {listLayout}
             renderItem={({item}) => <ItemLayout
@@ -48,6 +47,7 @@ const LayoutScreen = ({navigation}) => {
             TIME_SHIFT_ERROR={convertTime(item.TIME_SHIFT_ERROR)}
             TIME_SHIFT_BREAK={convertTime(item.TIME_SHIFT_BREAK)}
             TIME_SHIFT_CHANGE_MOLD={convertTime(item.TIME_SHIFT_CHANGE_MOLD)}
+            
             />}
             />
         </View>

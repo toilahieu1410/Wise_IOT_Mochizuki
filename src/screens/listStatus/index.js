@@ -6,7 +6,6 @@ import { Appbar, Button, DataTable, Modal,  } from 'react-native-paper';
 import backgroundScreen from '../../publics/images/background.png';
 import ListTable from '../../components/listStatus/table';
 import { Dimensions } from "react-native";
-import { autoType } from 'd3';
 
 var width = Dimensions.get('window').width; //full width
 const ListStatus = ({navigation}) => {
@@ -31,7 +30,7 @@ const ListStatus = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="List Status"/>
             </Appbar.Header>
-            <ScrollView  horizontal={true} > 
+            <ScrollView  horizontal > 
             <DataTable style={styles.dataTable}>
             <DataTable.Header style={{borderBottomColor:'#fff'}}>
             <DataTable.Title ><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
@@ -48,8 +47,8 @@ const ListStatus = ({navigation}) => {
 
             <FlatList
                 data={listLayout}
-                renderItem={({item}) => <ListTable
-                style={styles.listStatus}
+                renderItem={({item, index}) => <ListTable
+                dataLength={index}
                 WDT_USERNAME={item.WDT_USERNAME}
                 COUNT_SHIFT_GREEN={item.COUNT_SHIFT_GREEN}
                 COUNT_SHIFT_YELLOW={item.COUNT_SHIFT_YELLOW}
