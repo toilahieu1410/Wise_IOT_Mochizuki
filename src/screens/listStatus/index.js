@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiLayout} from '../../redux/layout/action';
+
 import {View, Text, StyleSheet, FlatList, ImageBackground, ScrollView, Dimensions} from 'react-native'
 import { Appbar, Button, DataTable, Modal} from 'react-native-paper';
 import backgroundScreen from '../../publics/images/background.png';
 import ListTable from '../../components/listStatus/table';
+
 
 const width = Dimensions.get('window').width; //full width
 const ListStatus = ({navigation}) => {

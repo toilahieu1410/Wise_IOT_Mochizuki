@@ -4,13 +4,13 @@ import { ProgressBar } from 'react-native-paper';
 import { Dimensions } from "react-native";
 
 function checkData(status){
-        if(status === 0) {return <View style={{width:20, height:20,borderRadius:40/2, backgroundColor:'gray'}}></View>};
-        if(status === 10) {return <Text style={{width:20, height:20,borderRadius:40/2, backgroundColor:'green'}}></Text>};
-        if(status === 20) {return <View style={{width:100,position:'relative',flexDirection:'row',justifyContent:'space-between',borderTopLeftRadius:10,borderTopRightRadius:10, backgroundColor:'yellow'}}></View>};
-        if(status === 30) {return <Text style={{width:20, height:20,borderRadius:40/2, backgroundColor:'red'}}></Text>};
-        if(status === 40) {return <Text style={{width:20, height:20,borderRadius:40/2, backgroundColor:'blue'}}></Text>};
-        if(status === 50) {return <Text style={{width:20, height:20,borderRadius:40/2, backgroundColor:'orange'}}></Text>};
-        if(status === 60) {return <Text style={{width:20, height:20,borderRadius:40/2, backgroundColor:'white'}}></Text>}
+        if(status === 0) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'gray'}}></Text>};
+        if(status === 10) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,bordert:30/2, backgroundColor:'green'}}></Text>};
+        if(status === 20) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'yellow', color:'black'}}></Text>};
+        if(status === 30) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'red'}}></Text>};
+        if(status === 40) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'blue'}}></Text>};
+        if(status === 50) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'orange'}}></Text>};
+        if(status === 60) {return <Text style={{width:'100%', height:60,borderTopLeftRadius:30/2,borderTopRightRadius:30/2, backgroundColor:'white'}}></Text>}
     }
 
 function checkQty(upTime, percentTarget){
@@ -43,24 +43,28 @@ const Live = ({WDT_USERNAME, RUNNING_TIME, CURRENT_STATE, uptime, PERCENT_TARGET
         <View style={styles.body}>
             <View style={styles.flex}>
             {checkData(CURRENT_STATE)}
-                <Text style={styles.textHeader}>{WDT_USERNAME}</Text>
-                <Text style={styles.value}>{RUNNING_TIME}</Text>
+                <View style={styles.absolute}>
+                    <Text style={styles.textHeader}>{WDT_USERNAME}</Text>
+                    <Text style={styles.value}>{RUNNING_TIME}</Text>
+                </View>
             </View>
                 {checkQty(uptime, PERCENT_TARGET)}
-
-                <Text style={styles.value}>{uptime}%</Text>
+                <Text style={styles.percentCenter}>{uptime}%</Text>
+              
+                <View style={styles.flexPadding}>
                 <ProgressBar progress={uptime / 100} style={styles.progressBar}/>
-                <View style={styles.flex}>
                     <View style={styles.time}>
-                    <Text style={styles.title}>Up-Time</Text>
-                    <Text style={styles.value}>{TIME_GREEN}</Text>
+                        <Text style={styles.title}>Up-Time</Text>
+                        <Text style={styles.percent}>{TIME_GREEN}</Text>
                     </View>
                     <View style={styles.time}>
-                    <Text style={styles.title}>Down-Time</Text>
-                        <Text style={styles.value}>{TIME_LOSS}</Text>
+                        <Text style={styles.title}>Down-Time</Text>
+                        <Text style={styles.percent}>{TIME_LOSS}</Text>
                     </View>
                 </View>
-                <View style={styles.flex}><Text style={styles.day}>Last 5 days</Text></View>
+            <View style={styles.flex}>
+                <Text style={styles.day}>Last 5 days</Text>
+            </View>
         </View>
     )
 }
@@ -69,19 +73,24 @@ export default Live;
 const styles = StyleSheet.create({
     body: {
        flex:1,
-    
-       
+     
+    },
+    flexPadding: {
+        paddingLeft:15,
+        paddingRight:15,
     },
     time: {
-    
+        paddingLeft:20,
+        paddingRight:20,
         flex:2,
         flexDirection:"row",
         justifyContent:'space-between',
         marginBottom:10,
     },
     textHeader: {
-        color:'#fff',
+        color:'#000',
         fontSize: 20,
+        right:0,
     },
     title: {
         textTransform:'capitalize',
@@ -90,20 +99,41 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         fontSize: 22,
     },
-    value: {
-        fontSize: 22,
-        color:'#fff',
+    percentCenter: {
         textAlign:'center',
+        color:'#fff',
+        fontSize: 22,
+    },
+    percent: {
+        color:'#fff',
+        fontSize: 22,
+    },
+    value: {
+   
+        color:'#000',
+        textAlign:'center',
+    },
+    absolute: {
+        position:'absolute',
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     day: {
         color:'#fff',
+        textAlign:'center'
     },
     homeLayout: {
         padding:15,
     },
     flex: {
+        justifyContent:'center',
         marginBottom:10,
-        color:'#fff',
+        color:'#000',
+
     },
     circle: {
         flexDirection: 'row',
@@ -115,7 +145,6 @@ const styles = StyleSheet.create({
         color:'#fff',
         fontSize:22,
     },
-  
     progressBar: {
         backgroundColor:'gray',
         flex: 1,
