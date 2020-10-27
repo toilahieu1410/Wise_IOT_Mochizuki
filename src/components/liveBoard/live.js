@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     flex: {
         marginBottom:10,
         color:'#fff',
-       
     },
     circle: {
         flexDirection: 'row',
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         color:'#fff',
         fontSize:22,
-
     },
   
     progressBar: {

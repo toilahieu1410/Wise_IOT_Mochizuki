@@ -33,7 +33,7 @@ export default ListTable;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderBottomColor:'#ffffff54',
+        borderBottomColor:'transparent',
+        borderBottomWidth:5,
     },
-    
 })
