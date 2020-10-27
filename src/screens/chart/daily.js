@@ -8,6 +8,7 @@ import moment from 'moment';
 import StackedBarCharts from '../../components/timeline/stackedBarChart';
 import LineCharts from '../../components/timeline/lineChart';
 import PickDevices from '../../components/timeline/pickMcid';
+import { LineChart } from 'react-native-svg-charts';
 
 const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
 const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
@@ -60,9 +61,9 @@ const daily = ({navigation}) => {
             colors={colors}
             data={data}
             dataY={dataY}
+            dataX={dataX}
             horizontal={false}
             >
-            
             </StackedBarCharts>
             {/* <LineCharts dataLineChart={listDataSTD}/> */}
             </ScrollView>
