@@ -8,7 +8,7 @@ export const getApiReportShift = (startDate, endDate) => async dispatch => {
     try {
         callApiReportShift(startDate, endDate)
         .then(function(res) {
-            return dispatch({type: REPORT_SHIFT_SUCCESS, report_shift: res})
+            return dispatch({type: REPORT_SHIFT_SUCCESS, reportShift: res})
         })
     } catch (error) {
         return dispatch({type: REPORT_SHIFT_ERROR, error});

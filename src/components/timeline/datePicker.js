@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, DatePicker, Text } from 'native-base';
+import { DatePicker } from 'native-base';
 
 const datePicker = ({onPress}) => {
 
@@ -14,8 +14,8 @@ const datePicker = ({onPress}) => {
             animationType={"fade"}
             androidMode={"default"}
             placeHolderText="Select date"
-            textStyle={{ color: "0b4645db" }}
-            placeHolderTextStyle={{ color: "#0b4645db" }}
+            textStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
+            placeHolderTextStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
             onDateChange={onPress}
             disabled={false}
             />
