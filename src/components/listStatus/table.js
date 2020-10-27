@@ -13,10 +13,10 @@ function checkData(status, WDT_USERNAME){
 }
 
 const ListTable = ({WDT_USERNAME, COUNT_SHIFT_GREEN, COUNT_SHIFT_YELLOW, COUNT_SHIFT_ERROR, 
-    COUNT_SHIFT_BREAK, COUNT_SHIFT_CHANGE_MOLD, COUNT_SHIFT_RED, COUNT_SHIFT_OFF, uptime, CURRENT_STATE}) => {
+    COUNT_SHIFT_BREAK, COUNT_SHIFT_CHANGE_MOLD, COUNT_SHIFT_RED, COUNT_SHIFT_OFF, uptime, CURRENT_STATE, dataLength}) => {
         
     return (
-        <DataTable.Row style={styles.container}>
+        <DataTable.Row style={[styles.container, {backgroundColor: dataLength % 2 == 0 ? '#11423700' : '#ffffff2e'}]}>
             {checkData(CURRENT_STATE, WDT_USERNAME)}
             <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_GREEN}</Text></DataTable.Cell>
             <DataTable.Cell numeric><Text style={{color:'#fff'}}>{COUNT_SHIFT_YELLOW}</Text></DataTable.Cell>
