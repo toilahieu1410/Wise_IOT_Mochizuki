@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react';
-<<<<<<< Updated upstream
-import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
-=======
 import {View, Text, StyleSheet, FlatList,ImageBackground} from 'react-native';
->>>>>>> Stashed changes
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import {getApiLiveBoardTime ,getApiLast5Day} from '../../redux/liveBoard/action';

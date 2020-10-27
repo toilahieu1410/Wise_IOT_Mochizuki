@@ -23,6 +23,7 @@ const ListStatus = ({navigation}) => {
         }, 1000);
         return () => clearInterval(interval);
     }, [page])
+ 
     return (
         <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
@@ -46,19 +47,19 @@ const ListStatus = ({navigation}) => {
             </DataTable.Header>
 
             <FlatList
-            data={listLayout}
-            renderItem={({item}) => <ListTable
-        
-            WDT_USERNAME={item.WDT_USERNAME}
-            COUNT_SHIFT_GREEN={item.COUNT_SHIFT_GREEN}
-            COUNT_SHIFT_YELLOW={item.COUNT_SHIFT_YELLOW}
-            COUNT_SHIFT_ERROR={item.COUNT_SHIFT_ERROR}
-            COUNT_SHIFT_BREAK={item.COUNT_SHIFT_BREAK}
-            COUNT_SHIFT_CHANGE_MOLD={item.COUNT_SHIFT_CHANGE_MOLD}
-            COUNT_SHIFT_RED={item.COUNT_SHIFT_RED}
-            COUNT_SHIFT_OFF={item.COUNT_SHIFT_OFF}
-            uptime={item.uptime}
-            CURRENT_STATE={item.CURRENT_STATE}
+                data={listLayout}
+                renderItem={({item}) => <ListTable
+                style={styles.listStatus}
+                WDT_USERNAME={item.WDT_USERNAME}
+                COUNT_SHIFT_GREEN={item.COUNT_SHIFT_GREEN}
+                COUNT_SHIFT_YELLOW={item.COUNT_SHIFT_YELLOW}
+                COUNT_SHIFT_ERROR={item.COUNT_SHIFT_ERROR}
+                COUNT_SHIFT_BREAK={item.COUNT_SHIFT_BREAK}
+                COUNT_SHIFT_CHANGE_MOLD={item.COUNT_SHIFT_CHANGE_MOLD}
+                COUNT_SHIFT_RED={item.COUNT_SHIFT_RED}
+                COUNT_SHIFT_OFF={item.COUNT_SHIFT_OFF}
+                uptime={item.uptime}
+                CURRENT_STATE={item.CURRENT_STATE}
             />}
             />
 
@@ -89,13 +90,15 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'cover',
-
     },
+
     dataTable: {
         overflow:'scroll',
         width:width,
-        borderColor: '#ffffff54',
-      
-   
+    },
+    listStatus: {
+        color:'#fff',
+        borderRadius:20,
+        
     }
 })
