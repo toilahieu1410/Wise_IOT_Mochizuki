@@ -9,9 +9,7 @@ const ItemLastDay = ({TEN_NGAY, TIME_GREEN, uptime}) => {
                 <View style={styles.flex}>
                     <Text style={styles.title}>{TEN_NGAY}</Text>
                     <Text style={styles.value}>{TIME_GREEN}</Text>
-                    <View style={styles.percent}>
-
-                    </View>
+                
                     <Text style={styles.value}>{uptime}%</Text>
                 </View>
                 <ProgressBar progress={uptime / 100} style={styles.progressBar}/>
@@ -23,7 +21,6 @@ const ItemLastDay = ({TEN_NGAY, TIME_GREEN, uptime}) => {
 export default ItemLastDay;
 const styles = StyleSheet.create({
     value: {
-        marginRight: 5,
         fontSize: 22,
         marginLeft: 20,
         color:'#fff',

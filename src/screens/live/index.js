@@ -29,39 +29,39 @@ const LiveScreen = () => {
     return (
         <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
-            <ScrollView>
             <View style={styles.toolBar}>
             <Appbar.Header>
                 <Appbar.Content title="Live Board"/>
             </Appbar.Header>
             </View>
-            
+          
             <PickDevices
+       
                 devices={mcid}
                 setDevices={setMcid}
             />
+            <ScrollView>
+            <View style={styles.body}>
+            <FlatList
+                data={listLiveBoardTime}
+                renderItem={({item}) => <Live
+                WDT_USERNAME={item.WDT_USERNAME}
+                RUNNING_TIME={convertTime(item.RUNNING_TIME)}
+                CURRENT_STATE={item.CURRENT_STATE}
+                uptime={item.uptime}
+                PERCENT_TARGET={item.PERCENT_TARGET}
+                TIME_GREEN={convertTime(item.TIME_GREEN)}
+                TIME_LOSS={convertTime(item.TIME_LOSS)}
+            />}
+            />
 
-        <View style={styles.body}>
-        <FlatList
-        data={listLiveBoardTime}
-        renderItem={({item}) => <Live
-        WDT_USERNAME={item.WDT_USERNAME}
-        RUNNING_TIME={convertTime(item.RUNNING_TIME)}
-        CURRENT_STATE={item.CURRENT_STATE}
-        uptime={item.uptime}
-        PERCENT_TARGET={item.PERCENT_TARGET}
-        TIME_GREEN={convertTime(item.TIME_GREEN)}
-        TIME_LOSS={convertTime(item.TIME_LOSS)}
-        />}
-        />
-
-        <FlatList
-            data={listLiveBoardLastDay}
-            renderItem={({item}) => <ItemLastDay
-            TEN_NGAY={item.TEN_NGAY}
-            TIME_GREEN={convertTime(item.TIME_GREEN)}
-            uptime={item.uptime}
-        />}
+            <FlatList
+                data={listLiveBoardLastDay}
+                renderItem={({item}) => <ItemLastDay
+                TEN_NGAY={item.TEN_NGAY}
+                TIME_GREEN={convertTime(item.TIME_GREEN)}
+                uptime={item.uptime}
+            />}
         />
         </View>
         </ScrollView>
@@ -75,12 +75,19 @@ export default LiveScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#282f3ac7',
+        elevation: 10,
+
     },
     body: {
+  
         flex: 1,
-        margin:10,
         borderRadius:10,
-        backgroundColor: '#282f3ac7',
+  
+        padding:10,
+        justifyContent:'center',
+
+        borderRadius:30/2,
         
     },
     picture: {
