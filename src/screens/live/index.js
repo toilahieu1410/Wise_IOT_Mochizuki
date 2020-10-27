@@ -6,7 +6,7 @@ import {getApiLiveBoardTime ,getApiLast5Day} from '../../redux/liveBoard/action'
 import backgroundScreen from '../../publics/images/background.png';
 import Live from '../../components/liveBoard/live';
 import ItemLastDay from '../../components/liveBoard/lastDay';
-import { Toolbar } from 'react-native-material-ui';
+import PickDevices from '../../components/timeline/pickMcid';
 
 const LiveScreen = () => {
     const dispatch = useDispatch();
@@ -31,28 +31,15 @@ const LiveScreen = () => {
         <View style={styles.container}>
             <ScrollView>
             <View style={styles.toolBar}>
-                <Toolbar
-                centerElement = 'Live Board'
-                rightElement={{
-                    menu: {
-                        icon: "more-vert",
-                        labels: ["PM07", "PM09", "PM01"]
-                    }
-                }}
-                onRightElementPress={ (label) => {
-                if(label.index === 0) {
-                    setMcid(1)
-                }
-                if(label.index === 1){
-                    setMcid(2)
-                }
-                if(label.index === 2){
-                    setMcid(3)
-                }
-                }}
-                />
+            <Appbar.Header>
+                <Appbar.Content title="Live Board"/>
+            </Appbar.Header>
             </View>
             
+            <PickDevices
+                devices={mcid}
+                setDevices={setMcid}
+            />
 
         <View style={styles.body}>
         <FlatList

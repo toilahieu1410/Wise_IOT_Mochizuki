@@ -14,7 +14,7 @@ import {
   } from 'react-native';
   import Icon from 'react-native-vector-icons/Ionicons';
   import {useDispatch, useSelector} from 'react-redux';
-  import backgroundScreen from '../../publics/images/city-night.jpg';
+  import backgroundScreen from '../../publics/images/form_login.jpg';
   import logo from '../../publics/images/Wise_iot_white.png';
   import {getApiLogin} from '../../redux/auth/action';
   const {width: WIDTH} = Dimensions.get('window')
@@ -48,7 +48,7 @@ const SignInScreen = () => {
           />
         </View>
         <View>
-        <Icon name={'ios-paw-outline'} size={28} color={'rgba(255, 255, 255, 0.7)' } style={styles.inputIcon} />
+        <Icon name={'ios-lock-closed-outline'} size={28} color={'rgba(255, 255, 255, 0.7)' } style={styles.inputIcon} />
         <TextInput 
           label = 'password'
           mode = 'outlined'
@@ -62,7 +62,7 @@ const SignInScreen = () => {
           secureTextEntry={showPass}
         />
 
-        <TouchableOpacity style={styles.btnEye} onPress={() => setShowPass(false)}>
+        <TouchableOpacity style={styles.btnEye} onPress={() => setShowPass(!showPass)}>
           <Icon name={'ios-eye-outline'} size={26} color={'rgba(255, 255, 255, 0.7)'}/>
         </TouchableOpacity>
         </View>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
   },
     opacity: {
-      backgroundColor: '#282f3ac7',
+      backgroundColor: '#282f3aad',
       top: 0,
       left: 0,
       width: '100%',
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
       width: WIDTH - 250,
       height: 45,
       borderRadius: 25,
-      backgroundColor: '#432577',
+      backgroundColor: '#114237',
       justifyContent: 'center',
       alignItems: 'center',
       marginLeft: 200
