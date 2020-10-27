@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiLayout} from '../../redux/layout/action';
-import {View, Text, StyleSheet, FlatList,ImageBackground,ScrollView} from 'react-native'
-import { Appbar, Button, DataTable, Modal,  } from 'react-native-paper';
+import {View, Text, StyleSheet, FlatList, ImageBackground, ScrollView, Dimensions} from 'react-native'
+import { Appbar, Button, DataTable, Modal} from 'react-native-paper';
 import backgroundScreen from '../../publics/images/background.png';
 import ListTable from '../../components/listStatus/table';
-import { Dimensions } from "react-native";
 
-var width = Dimensions.get('window').width; //full width
+const width = Dimensions.get('window').width; //full width
 const ListStatus = ({navigation}) => {
     const dispatch = useDispatch();
     const listLayout = useSelector((store) => store.layout.listLayout);
@@ -30,7 +29,7 @@ const ListStatus = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="List Status"/>
             </Appbar.Header>
-            <ScrollView  horizontal > 
+            <ScrollView  horizontal={true} > 
             <DataTable style={styles.dataTable}>
             <DataTable.Header style={{borderBottomColor:'#fff'}}>
             <DataTable.Title ><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
@@ -42,7 +41,6 @@ const ListStatus = ({navigation}) => {
             <DataTable.Title numeric><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
             <DataTable.Title numeric><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
             <DataTable.Title numeric><Text style={{color:'#fff'}}>UpTime</Text></DataTable.Title>
-            
             </DataTable.Header>
 
             <FlatList
