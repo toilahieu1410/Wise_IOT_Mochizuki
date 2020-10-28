@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList, ImageBackground, ScrollView, Dimensions} from 'react-native';
-import { Appbar, Button, DataTable, Modal } from 'react-native-paper';
+import { Appbar, DataTable } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiReportShift} from '../../redux/report_shift/action';
 import moment from 'moment';
@@ -12,7 +12,6 @@ const width = Dimensions.get('window').width; //full width
 const ReportShift = ({navigation}) => {
     const dispatch = useDispatch();
     const listReportShift = useSelector((store) => store.reportShift.listReportShift);
-
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const convertStartDate = moment(startDate).format('DD/MM/YYYY');
@@ -20,14 +19,6 @@ const ReportShift = ({navigation}) => {
     useEffect(() => {
         dispatch(getApiReportShift(convertStartDate, convertEndDate));
     }, [startDate, endDate]);
-
-    const renderReportShift = useMemo(() => {
-        if(listReportShift.length === 0 ) {
-            return null;
-        }
-        return listReportShift;
-    }, [listReportShift]);
-    if(renderReportShift === null) return null;
     return (
         <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
@@ -35,31 +26,33 @@ const ReportShift = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Shift"/>
             </Appbar.Header>
-            <DatePicker onPress={(text) => setStartDate(text)} style={{color: 'white'}}/>
-            <DatePicker onPress={(text) => setEndDate(text)}/>
+            <View style={{flexDirection:'row'}}>
+                <DatePicker onPress={(text) => setStartDate(text)}/>
+                <DatePicker onPress={(text) => setEndDate(text)}/>
+            </View>
 
-            <ScrollView  horizontal={true}> 
+            <ScrollView  horizontal={true}>
             <DataTable style={styles.dataTable}>
             <DataTable.Header style={{borderBottomColor:'#fff'}}>
-            <DataTable.Title ><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Date</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Shift</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Run</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Misu</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Kasu</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>M+K</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Change</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
-            <DataTable.Title numeric><Text style={{color:'#fff'}}>Uptime</Text></DataTable.Title>
+            <DataTable.Title style={{width:'80%'}}><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
+
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Shift</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Run</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Misu</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Kasu</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>M+K</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Change</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Uptime</Text></DataTable.Title>
             </DataTable.Header>
 
             <FlatList
-            data={renderReportShift}
+            data={listReportShift}
             renderItem={({item, index}) => <TableReportShift
             dataLength={index}
             MACHINE_NAME={item.MACHINE_NAME}
-            DATE={item.DATE}
+            DATE={moment(item.DATE).format('DD/MM')}
             SHIFT={item.SHIFT}
             COUNT_GREEN={item.COUNT_GREEN}
             COUNT_YELLOW={item.COUNT_YELLOW}
@@ -69,6 +62,13 @@ const ReportShift = ({navigation}) => {
             COUNT_RED={item.COUNT_RED}
             COUNT_OFF={item.COUNT_OFF}
             UPTIME={item.UPTIME}
+            TIME_GREEN={item.TIME_GREEN}
+            TIME_YELLOW={item.TIME_YELLOW}
+            TIME_ERROR={item.TIME_ERROR}
+            TIME_BREAK={item.TIME_BREAK}
+            TIME_CHANGE_MOLD={item.TIME_CHANGE_MOLD}
+            TIME_RED={item.TIME_RED}
+            TIME_OFF={item.TIME_OFF}
             />}
             />
 

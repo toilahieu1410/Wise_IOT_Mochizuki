@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import { logOut} from '../../redux/auth/action';
@@ -11,6 +11,7 @@ const ReportScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
+            <ScrollView>
             <Appbar.Header>
                 <Appbar.Content title="Report"/>
                 <Appbar.Action icon='logout' onPress={() => dispatch(logOut())} />
@@ -51,7 +52,7 @@ const ReportScreen = ({navigation}) => {
             onPress={() => navigation.navigate('ReportMonthly')}>
             Monthly
         </Button>
-
+        </ScrollView>
         </View>
 
         

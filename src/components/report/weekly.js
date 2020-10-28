@@ -2,14 +2,14 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {DataTable} from 'react-native-paper';
 
-const TableReportShift = ({dataLength, MACHINE_NAME, DATE, SHIFT, COUNT_GREEN, COUNT_YELLOW, COUNT_ERROR,
+const TableReportWeekly = ({dataLength, MACHINE_NAME, BEGIN_DATETIME, END_DATETIME, COUNT_GREEN, COUNT_YELLOW, COUNT_ERROR,
     COUNT_BREAK, COUNT_CHANGE_MOLD, COUNT_RED, COUNT_OFF, UPTIME, TIME_GREEN, TIME_YELLOW, TIME_ERROR, TIME_BREAK,
     TIME_CHANGE_MOLD, TIME_RED, TIME_OFF}) => {
     return(
         <View>
         <DataTable.Row style={[styles.container, {backgroundColor: dataLength % 2 == 0 ? '#11423700' : '#ffffff2e'}]}>
             <DataTable.Cell><Text style={{color:'#fff'}}>{MACHINE_NAME}</Text></DataTable.Cell>
-            <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>{SHIFT}</Text></DataTable.Cell>
+            <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}></Text></DataTable.Cell>
             <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>{COUNT_GREEN}</Text></DataTable.Cell>
             <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>{COUNT_YELLOW}</Text></DataTable.Cell>
             <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>{COUNT_ERROR}</Text></DataTable.Cell>
@@ -20,8 +20,8 @@ const TableReportShift = ({dataLength, MACHINE_NAME, DATE, SHIFT, COUNT_GREEN, C
             <DataTable.Cell numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>{UPTIME}</Text></DataTable.Cell>
         </DataTable.Row>
         <DataTable.Row style={[styles.container, {backgroundColor: dataLength % 2 == 0 ? '#11423700' : '#ffffff2e'}]}>
-            <DataTable.Cell><Text style={{color:'#fff'}}>{DATE}</Text></DataTable.Cell>
-            <DataTable.Cell numeric><Text style={{color:'#fff'}}></Text></DataTable.Cell>
+            <DataTable.Cell><Text style={{color:'#fff'}}>{BEGIN_DATETIME}</Text></DataTable.Cell>
+            <DataTable.Cell ><Text style={{color:'#fff'}}>{END_DATETIME}</Text></DataTable.Cell>
             <DataTable.Cell ><Text style={{color:'#fff'}}>{TIME_GREEN}</Text></DataTable.Cell>
             <DataTable.Cell ><Text style={{color:'#fff'}}>{TIME_YELLOW}</Text></DataTable.Cell>
             <DataTable.Cell ><Text style={{color:'#fff'}}>{TIME_ERROR}</Text></DataTable.Cell>
@@ -34,7 +34,7 @@ const TableReportShift = ({dataLength, MACHINE_NAME, DATE, SHIFT, COUNT_GREEN, C
         </View>
     )}
 
-export default TableReportShift;
+export default TableReportWeekly;
 const styles = StyleSheet.create({
     flex: 1,
 })
