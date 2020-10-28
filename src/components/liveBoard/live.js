@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         color:'#fff',
         textAlign:'left',
         marginLeft: 5,
-        fontSize: 22,
+        fontSize: 20,
     },
     percentCenter: {
         textAlign:'center',
@@ -106,25 +106,29 @@ const styles = StyleSheet.create({
     },
     percent: {
         color:'#fff',
-        fontSize: 22,
+        fontSize: 20,
     },
     value: {
-   
+        fontSize:20,
         color:'#000',
         textAlign:'center',
     },
     absolute: {
+        flexDirection:'row',
         position:'absolute',
         top: 0, 
         left: 0, 
         right: 0, 
         bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginLeft:50,
+        marginRight:50,
     },
     day: {
         color:'#fff',
-        textAlign:'center'
+        textAlign:'center',
+        fontSize:18,
     },
     homeLayout: {
         padding:15,
