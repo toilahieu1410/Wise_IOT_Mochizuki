@@ -47,7 +47,7 @@ export const callApiReportMonthly = (year, listMonth) => {
     return new Promise((resolve, reject) => {
         axios.post('https://wise-mochizuki.hoplongtech.com/api/Api_Machine/ReportMonthly', {
             nam: year,
-            ListThang: listMonth
+            ListThang: [{thang: listMonth}]
         })
         .then(res => resolve(res.data))
         .catch(error => reject(error))

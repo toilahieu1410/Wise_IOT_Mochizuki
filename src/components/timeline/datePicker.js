@@ -1,8 +1,10 @@
 import React from 'react';
 import { DatePicker } from 'native-base';
+import moment from 'moment';
 
+const today = new Date()
+const date = moment(today).format('DD/MM/YYYY');
 const datePicker = ({onPress}) => {
-
     return (
           <DatePicker
             defaultDate={new Date()}
@@ -13,7 +15,7 @@ const datePicker = ({onPress}) => {
             modalTransparent={false}
             animationType={"fade"}
             androidMode={"default"}
-            placeHolderText="Select date"
+            placeHolderText={date}
             textStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
             placeHolderTextStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
             onDateChange={onPress}

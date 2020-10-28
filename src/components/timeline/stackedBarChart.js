@@ -27,13 +27,13 @@ const StackedBarCharts = ({data, keys, colors, dataY, dataX, horizontal}) => {
             contentInset={{ top: 30, bottom: 30 }}>
                 <Grid direction={Grid.Direction.HORIZONTAL}/>
             </StackedBarChart>
-            <XAxis
+            {/* <XAxis
                 style={{ marginHorizontal: -5 }}
                 data={dataX}
                 formatLabel={(value, index) => dataX[index]}
                 contentInset={{left: 10, right: 10}}
                 svg={{ fontSize: 10, fill: 'black' }}
-            />
+            /> */}
             </View>
         </View>
     )
