@@ -34,16 +34,16 @@ const ReportWeekly = ({navigation}) => {
             <ScrollView  horizontal={true}>
             <DataTable style={styles.dataTable}>
             <DataTable.Header style={{borderBottomColor:'#fff'}}>
-            <DataTable.Title style={{width:'80%'}}><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Date</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Run</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Misu</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Kasu</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>M+K</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Change</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
-            <DataTable.Title numeric style={{justifyContent:'center'}}><Text style={{color:'#fff'}}>Uptime</Text></DataTable.Title>
+            <DataTable.Title style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Name</Text ></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Date</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Run</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Misu</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Kasu</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>M+K</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Change</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Wait</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Off</Text></DataTable.Title>
+            <DataTable.Title numeric style={{justifyContent:'center',textAlign: 'center'}}><Text style={{color:'#fff'}}>Uptime</Text></DataTable.Title>
             </DataTable.Header>
 
             <FlatList
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     dataTable: {
-        overflow:'scroll',
-        width:width,
+        overflow: 'scroll',
+        width: 750,
     },
     datePicker: {
         flexDirection:'row',
