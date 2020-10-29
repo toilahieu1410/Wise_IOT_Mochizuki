@@ -21,7 +21,6 @@ const quantity = ({navigation}) => {
     }, [mcid, dateTime])
 
     const data = listTimelineQuantity;
-    
 
     return (
         <ImageBackground source={backgroundScreen} style={styles.picture}>
@@ -31,12 +30,18 @@ const quantity = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Quantity"/>
             </Appbar.Header>
-            <View style={styles.dropdown}>
-                <DatePicker onPress={(text) => setDate(text)}/>
+            <View style={styles.header}>
+            <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:10,
+      borderBottomRightRadius:20,borderBottomWidth:1,}}>
+         <DatePicker onPress={(text) => setDate(text)}/>
+          </View>
+          <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:10,
+      borderBottomRightRadius:20,borderBottomWidth:1,}}>
                 <PickDevices
                 devices={mcid}
                 setDevices={setMcid}
                 />
+            </View>
             </View>
          
          
@@ -74,8 +79,11 @@ const styles = StyleSheet.create({
         height: null,
         resizeMode: 'cover',
     },
-    dropdown: {
-        width:200,
-        
-    }
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginLeft:150,
+        marginRight:150,
+      },
 })

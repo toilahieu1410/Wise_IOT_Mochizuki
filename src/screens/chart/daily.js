@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, ImageBackground} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import DatePicker from '../../components/timeline/datePicker';
@@ -9,6 +9,7 @@ import StackedBarCharts from '../../components/timeline/stackedBarChart';
 import LineCharts from '../../components/timeline/lineChart';
 import PickDevices from '../../components/timeline/pickMcid';
 import { LineChart } from 'react-native-svg-charts';
+import backgroundScreen from '../../publics/images/background.png';
 
 const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
 const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
@@ -44,18 +45,28 @@ const daily = ({navigation}) => {
     if(data === null) return null;
 
     return (
+        <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
              <ScrollView>
             <Appbar.Header>
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Daily"/>
             </Appbar.Header>
+            <View style={styles.header}>
+            <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:10,
+      borderBottomRightRadius:20,borderBottomWidth:1,}}>
             <DatePicker onPress={(text) => setDate(text)}/>
+            </View>
+            <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:10,
+      borderBottomRightRadius:20,borderBottomWidth:1,}}>
             <PickDevices
                 devices={mcid}
                 setDevices={setMcid}
             />
-            <Text style={styles.title}>{mcid}</Text>
+            </View>
+            </View>
+          
+           
             <StackedBarCharts
             keys={keys}
             colors={colors}
@@ -68,13 +79,20 @@ const daily = ({navigation}) => {
             {/* <LineCharts dataLineChart={listDataSTD}/> */}
             </ScrollView>
         </View>
+        </ImageBackground>
     )
 }
 
 export default daily;
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#282f3ac7',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        position:'absolute',
     },
     title: {
         color:'#0b4645db',
@@ -82,5 +100,18 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         fontSize: 22,
         fontWeight: 'bold'
-    }
+    },
+    picture: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover',
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginLeft:150,
+        marginRight:150,
+      },
 })

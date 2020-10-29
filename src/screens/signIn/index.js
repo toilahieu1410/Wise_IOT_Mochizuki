@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     marginBottom: 200,
   },
   textInput: {
+    resizeMode:"contain",
     width: WIDTH - 55,
     height: 50,
     borderRadius: 25,
