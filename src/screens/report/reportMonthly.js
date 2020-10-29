@@ -28,13 +28,19 @@ const ReportMonthly = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Monthly"/>
             </Appbar.Header>
-            <View >
+            <View style={styles.datePicker}>
+                <View style={{width:100}}>
+                <PickMonth
+                    month={month}
+                    setMonth={setMonth}/>
+                </View>
+
+              <View style={{width:150}}>
               <PickYear
               year={year}
               setYear={setYear}/>
-              <PickMonth
-              month={month}
-              setMonth={setMonth}/>
+              </View>
+        
             </View>
             <ScrollView  horizontal={true}>
             <DataTable style={styles.dataTable}>
@@ -105,4 +111,20 @@ const styles = StyleSheet.create({
         overflow:'scroll',
         width:width,
     },
+    datePicker: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginLeft:150,
+        marginRight:150,
+    },
+    space: {
+        color:'#fff',
+        marginLeft:3,
+        marginRight:3,
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:0,
+        fontSize:24,
+    }
 })

@@ -25,7 +25,7 @@ const BarCharts = ({data, dataX}) => {
                 spacing={0.2}
                 gridMin={0}
             >
-                <Grid direction={Grid.Direction.HORIZONTAL}/>
+                <Grid             svg={{ fontSize: 10, stroke: '#cccccc59' }} direction={Grid.Direction.HORIZONTAL}/>
             </BarChart>
 
             <XAxis
@@ -45,5 +45,8 @@ const styles = StyleSheet.create({
         height: 400,
         flexDirection: 'row',
         padding: 20
+    },
+    line: {
+        color: '#ff6600',
     }
 })

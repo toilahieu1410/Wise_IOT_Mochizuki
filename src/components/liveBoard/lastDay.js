@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     paddingRight: 60,
     fontSize: 18,
     color: '#fff',
-    width:120,
+    width:130,
   },
   progressBar: {
     backgroundColor: 'gray',
