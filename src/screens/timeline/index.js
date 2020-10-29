@@ -65,12 +65,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   button: {
+    borderRadius:10,
+    padding:8,
     width: 120,
     height: 120,
     marginTop: 30,
     marginRight: 30,
     justifyContent: 'center',
-    backgroundColor: '#0b464599'
+    alignItems: 'center',
+    backgroundColor: '#106b6999',
   },
   picture: {
     flex: 1,

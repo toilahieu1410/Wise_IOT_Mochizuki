@@ -46,12 +46,21 @@ const ReportScreen = ({navigation}) => {
             <Text style={styles.textBtn}>Weekly</Text>
         </TouchableOpacity>
         </View>
+        <View style={styles.boxTimeline}>
         <TouchableOpacity
             mode="contained"
             style={styles.button}
             onPress={() => navigation.navigate('ReportMonthly')}>
             <Text style={styles.textBtn}>Monthly</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+            mode="contained"
+            style={styles.button1}
+            >
+            <Text style={styles.textBtn}></Text>
+        </TouchableOpacity>
+        </View>
+
         </View>
         </ScrollView>
         </View>
@@ -71,12 +80,22 @@ const styles = StyleSheet.create({
         position:'absolute',
     },
     button: {
+        borderRadius:10,
+        padding:8,
         width: 120,
         height: 120,
         marginTop: 30,
         marginRight: 30,
         justifyContent: 'center',
-        backgroundColor: '#0b464599',
+        alignItems: 'center',
+        backgroundColor: '#106b6999',
+    },
+    button1: {
+        backgroundColor:'transparent',
+        width: 120,
+        height: 120,
+        marginTop: 30,
+        marginRight: 30,
     },
     picture: {
         flex: 1,
@@ -90,7 +109,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
       },
       timeline: {
-          alignItems: 'center'
+          alignItems: 'center',
+          
       },
       boxTimeline: {
         flexDirection: 'row',
