@@ -6,7 +6,10 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
   TextInput,
+  Keyboard,
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -27,11 +30,19 @@ const SignInScreen = () => {
 
   return (
     <ImageBackground source={backgroundScreen} style={styles.picture}>
+   
       <View style={styles.opacity}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS == "android" ? "padding" : "height"}
+      style={styles.container}
+    >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.formLogin}>
+          
           <View style={styles.logoContainer}>
             <Image source={logo} style={styles.logo} />
           </View>
+          <View style={styles.contentLogin}>
           <View>
             <Icon
               name={'ios-person-outline'}
@@ -70,7 +81,6 @@ const SignInScreen = () => {
               underlineColorAndroid="transparent"
               secureTextEntry={showPass}
             />
-
             <TouchableOpacity
               style={styles.btnEye}
               onPress={() => setShowPass(!showPass)}>
@@ -89,9 +99,14 @@ const SignInScreen = () => {
             <Text style={styles.textLogin}>Login</Text>
           </TouchableOpacity>
           </View>
+          </View>
+     
   
         </View>
+        </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </View>
+   
     </ImageBackground>
   );
 };
@@ -99,6 +114,9 @@ const SignInScreen = () => {
 export default SignInScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   picture: {
     flex: 1,
     width: null,
@@ -119,7 +137,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   formLogin: {
-    marginTop:50,
+    marginTop:150,
+    top:-40,
+    flex: 1,
+    justifyContent: "center"
   },
   logoContainer: {
     alignItems: 'center',
@@ -129,11 +150,10 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'stretch',
     marginTop: 0,
-
-    marginBottom: 200,
+    top:-200,
+    marginBottom: 0,
   },
   textInput: {
-    resizeMode:"contain",
     width: WIDTH - 55,
     height: 50,
     borderRadius: 25,
@@ -141,13 +161,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
     color: 'rgba(255, 255, 255, 0.7)',
     marginHorizontal: 25,
-    marginBottom: 15,
     paddingLeft: 55,
+    marginBottom: 15
   },
   inputIcon: {
     position: 'absolute',
     top: 10,
     left: 40,
+  },
+  contentLogin: {
+    marginTop:50,
   },
   btnEye: {
     position: 'absolute',
@@ -166,8 +189,10 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.7)',
     fontSize: 20,
     textAlign: 'center',
+ 
   },
   loginSuccess: {
+    marginTop: 5,
     justifyContent: 'center',
     alignItems: 'center',
   }
