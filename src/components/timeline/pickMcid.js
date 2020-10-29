@@ -9,7 +9,7 @@ const PickDevices = ({devices, setDevices}) => {
               mode="dropdown"
               iosHeader="Select your SIM"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width: undefined }}
+              style={styles.picker}
               selectedValue={devices}
               onValueChange={setDevices}
             >
@@ -22,3 +22,8 @@ const PickDevices = ({devices, setDevices}) => {
 };
 
 export default PickDevices;
+const styles = StyleSheet.create({
+  picker: {
+    color: '#ffffff',
+  }
+})

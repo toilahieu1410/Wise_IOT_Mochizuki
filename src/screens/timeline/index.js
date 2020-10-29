@@ -1,12 +1,8 @@
 import React from 'react';
 
-import {View, StyleSheet, ImageBackground, Image} from 'react-native';
+import {View, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Text} from 'react-native';
 import {Appbar, Button} from 'react-native-paper';
 import backgroundScreen from '../../publics/images/background.png';
-import logoDaily from '../../publics/images/icon/img-daily.png';
-import logoWeekly from '../../publics/images/icon/img-weekly.png';
-import logoQuantity from '../../publics/images/icon/img-quantity.png';
-import logoMonthly from '../../publics/images/icon/img-monthly.png';
 const TimelineScreen = ({navigation}) => {
   return (
     <ImageBackground source={backgroundScreen} style={styles.picture}>
@@ -14,37 +10,38 @@ const TimelineScreen = ({navigation}) => {
         <Appbar.Header>
           <Appbar.Content title="TimeLine" />
         </Appbar.Header>
+        <ScrollView>
         <View style={styles.timeline}>
           <View style={styles.boxTimeline}>
-            <Button
+            <TouchableOpacity
               mode="contained"
               style={styles.button}
               onPress={() => navigation.navigate('Quantity')}>
-              <Image source={logoQuantity} />
-            </Button>
-            <Button
+              <Text style={styles.textBtn}>Quantity</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               mode="contained"
               style={styles.button}
               onPress={() => navigation.navigate('Daily')}>
-              <Image source={logoDaily} size={25} />
-            </Button>
+              <Text style={styles.textBtn}>Daily</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.boxTimeline}>
-            <Button
+            <TouchableOpacity
               mode="contained"
               style={styles.button}
               onPress={() => navigation.navigate('Weekly')}>
-              <Image source={logoWeekly} style={styles.logoMonthly} />
-            </Button>
-            <Button
+              <Text style={styles.textBtn}>Weekly</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               mode="contained"
               style={styles.button}
               onPress={() => navigation.navigate('Monthly')}>
-              <Image source={logoMonthly} 
-                      style={styles.logoMonthly} />
-            </Button>
+              <Text style={styles.textBtn}>Monthly</Text>
+            </TouchableOpacity>
           </View>
         </View>
+      </ScrollView>
       </View>
     </ImageBackground>
   );
@@ -70,8 +67,10 @@ const styles = StyleSheet.create({
   button: {
     width: 120,
     height: 120,
-    margin: 15,
+    marginTop: 30,
+    marginRight: 30,
     justifyContent: 'center',
+    backgroundColor: '#0b464599'
   },
   picture: {
     flex: 1,
@@ -79,12 +78,9 @@ const styles = StyleSheet.create({
     height: null,
     resizeMode: 'cover',
   },
-
-  logoMonthly: {
-    padding: 10,
-    margin: 5,
-    height: 200,
-    width: 200,
-    resizeMode: 'stretch',
+  textBtn: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontSize: 25,
+    textAlign: 'center',
   },
 });

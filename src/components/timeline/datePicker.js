@@ -17,7 +17,7 @@ const datePicker = ({onPress}) => {
             androidMode={"default"}
             placeHolderText={date}
             textStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
-            placeHolderTextStyle={{ color: "#fff", backgroundColor:'#0b46458f' }}
+            placeHolderTextStyle={{ color: "#fff", backgroundColor:'#0f3c3e00' }}
             onDateChange={onPress}
             disabled={false}
             />

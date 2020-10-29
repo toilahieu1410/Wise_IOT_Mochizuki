@@ -10,7 +10,7 @@ const BarCharts = ({data, dataX}) => {
             data={data}
             contentInset={{top: 20, bottom: 20}}
             svg={{
-                fill: 'grey',
+                fill: '#ffffff',
                 fontSize: 10,
             }}
             numberOfTicks={5}
@@ -20,7 +20,7 @@ const BarCharts = ({data, dataX}) => {
             <BarChart
                 style={{ flex: 1 }}
                 data={data}
-                svg={{ fill: '#0b4645db' }}
+                svg={{ fill: '#168e98' }}
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}
                 gridMin={0}
@@ -33,7 +33,7 @@ const BarCharts = ({data, dataX}) => {
                 data={data}
                 formatLabel={(value, index) => dataX[index]}
                 contentInset={{left: 10, right: 10}}
-                svg={{ fontSize: 10, fill: 'black' }}
+                svg={{ fontSize: 10, fill: '#ffffff' }}
             />
             </View>
         </View>
