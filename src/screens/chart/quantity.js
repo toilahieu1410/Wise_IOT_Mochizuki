@@ -31,12 +31,15 @@ const quantity = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Quantity"/>
             </Appbar.Header>
-            <DatePicker onPress={(text) => setDate(text)}/>
-            <PickDevices
-            devices={mcid}
-            setDevices={setMcid}
-            />
-            <Text style={styles.title}>{mcid}</Text>
+            <View style={styles.dropdown}>
+                <DatePicker onPress={(text) => setDate(text)}/>
+                <PickDevices
+                devices={mcid}
+                setDevices={setMcid}
+                />
+            </View>
+         
+         
             <BarCharts
             data={data}
             dataX={dataX}
@@ -70,5 +73,9 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'cover',
-      },
+    },
+    dropdown: {
+        width:200,
+        
+    }
 })

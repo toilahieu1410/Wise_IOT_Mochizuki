@@ -26,8 +26,9 @@ const ReportShift = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Shift"/>
             </Appbar.Header>
-            <View style={{flexDirection:'row'}}>
+            <View style={styles.datePicker}>
                 <DatePicker onPress={(text) => setStartDate(text)}/>
+                <Text style={styles.space}>-</Text>
                 <DatePicker onPress={(text) => setEndDate(text)}/>
             </View>
 
@@ -99,4 +100,18 @@ const styles = StyleSheet.create({
         overflow:'scroll',
         width:width,
     },
+    datePicker: {
+
+        flexDirection:'row',
+        justifyContent:'center',
+    },
+    space: {
+        color:'#fff',
+        marginLeft:3,
+        marginRight:3,
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:0,
+        fontSize:24,
+    }
 })

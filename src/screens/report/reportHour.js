@@ -23,7 +23,7 @@ const ReportHour = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Hour"/>
             </Appbar.Header>
-            <View style={{flexDirection:'row'}}>
+            <View style={styles.datePicker}>
             <DatePicker onPress={(text) => setStartDate(text)}/>
             </View>
         
@@ -90,5 +90,9 @@ const styles = StyleSheet.create({
     dataTable: {
         overflow:'scroll',
         width:width,
+    },
+    datePicker: {
+        flexDirection:'row',
+        justifyContent:'center',
     },
 })
