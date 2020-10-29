@@ -24,7 +24,6 @@ const LayoutScreen = ({navigation}) => {
     return (
         <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
-              
            <Appbar.Header>
                 <Appbar.Content title="Layout"/>
                 <Appbar.Action icon='table' onPress={() => {navigation.navigate('ListStatus')}} />
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'cover',
-
     },
 
 })

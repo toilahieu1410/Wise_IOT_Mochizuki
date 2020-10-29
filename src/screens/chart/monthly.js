@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, ImageBackground} from 'react-native';
 import { Appbar } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {getApiMonthlyChart} from '../../redux/timeline_monthly/action';
@@ -7,6 +7,7 @@ import PickYear from '../../components/timeline/pickYear';
 import PickMonth from '../../components/timeline/pickMonth';
 import PickDevices from '../../components/timeline/pickMcid';
 import StackedBarCharts from '../../components/timeline/stackedBarChart';
+import backgroundScreen from '../../publics/images/background.png';
 
 const colors = ['pink', '#FFA500', '#1b6cff', '#efe11f', '#EB1C24', '#008000e3', '#afafafe0']
 const keys   = ['TIME_CHANGE_MOLD', 'TIME_BREAK', 'TIME_ERROR', 'TIME_RED', 'TIME_YELLOW', 'TIME_GREEN', 'TIME_OFF']
@@ -35,7 +36,8 @@ const monthly = ({navigation}) => {
     if(data === null) return null;
 
     return (
-        <View>
+      <ImageBackground source={backgroundScreen} style={styles.picture}>
+        <View style={styles.container}>
           <ScrollView>
             <Appbar.Header>
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
@@ -43,15 +45,27 @@ const monthly = ({navigation}) => {
             </Appbar.Header>
 
             <View style={styles.header}>
-              <PickYear
-              year={year}
-              setYear={setYear}/>
+              <View style={{width:100,borderBottomColor:'#cccccc59',borderBottomLeftRadius:20,
+      borderBottomRightRadius:20,borderBottomWidth:1,}}>
               <PickMonth
               month={month}
               setMonth={setMonth}/>
+              </View>
+              <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:20,
+      borderBottomRightRadius:20,
+      borderBottomWidth:1,}}>
+              <PickYear
+              year={year}
+              setYear={setYear}/>
+              </View>
+           
+              <View style={{width:150,borderBottomColor:'#cccccc59',borderBottomLeftRadius:20,
+      borderBottomRightRadius:20,
+      borderBottomWidth:1,}}>
               <PickDevices
               devices={mcid}
               setDevices={setMcid}/>
+              </View>
             </View>
             <StackedBarCharts
             keys={keys}
@@ -61,10 +75,33 @@ const monthly = ({navigation}) => {
             horizontal={false}/>
           </ScrollView>
         </View>
+        </ImageBackground>
     )
 }
 
 export default monthly;
 const styles = StyleSheet.create({
-    
+  container: {
+    flex: 1,
+    backgroundColor: '#282f3ac7',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    position:'absolute',
+    },
+  picture: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems:'center',
+      marginLeft:150,
+      marginRight:150,
+
+    }
 })

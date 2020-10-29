@@ -10,7 +10,7 @@ const StackedBarCharts = ({data, keys, colors, dataY, dataX, horizontal}) => {
             data={dataY}
             contentInset={{top: 20, bottom: 20}}
             svg={{
-                fill: 'gray',
+                fill: '#ffffff',
                 fontSize: 10,
             }}
             numberOfTicks={5}
@@ -25,7 +25,7 @@ const StackedBarCharts = ({data, keys, colors, dataY, dataX, horizontal}) => {
             data={ data }
             showGrid={ false }
             contentInset={{ top: 30, bottom: 30 }}>
-                <Grid direction={Grid.Direction.HORIZONTAL}/>
+                <Grid svg={{ fontSize: 10, stroke: '#cccccc59' }} direction={Grid.Direction.HORIZONTAL}/>
             </StackedBarChart>
             {/* <XAxis
                 style={{ marginHorizontal: -5 }}
