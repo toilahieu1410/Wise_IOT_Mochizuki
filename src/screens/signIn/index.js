@@ -4,16 +4,13 @@ import {
     Text,
     TouchableOpacity,
     StyleSheet,
-    KeyboardAvoidingView,
     Image,
     ImageBackground,
     TextInput,
     Dimensions,
-    Button,
-    Alert
   } from 'react-native';
   import Icon from 'react-native-vector-icons/Ionicons';
-  import {useDispatch, useSelector} from 'react-redux';
+  import {useDispatch} from 'react-redux';
   import backgroundScreen from '../../publics/images/form_login.jpg';
   import logo from '../../publics/images/Wise_iot_white.png';
   import {getApiLogin} from '../../redux/auth/action';
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
       alignItems: 'center'
     },
     logo: {
-      width: 160,
+      width: 150,
       height: 80,
       resizeMode: 'stretch',
       marginTop: 70,

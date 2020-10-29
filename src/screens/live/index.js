@@ -34,13 +34,11 @@ const LiveScreen = () => {
                 <Appbar.Content title="Live Board"/>
             </Appbar.Header>
             </View>
-          
+            <ScrollView>
             <PickDevices
-       
                 devices={mcid}
                 setDevices={setMcid}
             />
-            <ScrollView>
             <View style={styles.body}>
             <FlatList
                 data={listLiveBoardTime}

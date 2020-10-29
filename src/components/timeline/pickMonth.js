@@ -1,4 +1,5 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {Picker, Form, Icon} from 'native-base';
 
 const PickMonth = ({month, setMonth}) => {
@@ -25,7 +26,7 @@ const PickMonth = ({month, setMonth}) => {
               mode="dropdown"
               iosHeader="Select Year"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width: undefined }}
+              style={styles.picker}
               selectedValue={month}
               onValueChange={setMonth}
             >
@@ -39,3 +40,8 @@ const PickMonth = ({month, setMonth}) => {
     )
 }
 export default PickMonth;
+const styles = StyleSheet.create({
+    picker: {
+      color: '#ffffff',
+    }
+  })

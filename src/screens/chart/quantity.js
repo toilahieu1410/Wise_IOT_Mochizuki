@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, ScrollView } from 'react-native';
+import {View, Text, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import { Appbar } from 'react-native-paper';
 import {getApiQuantityChart} from '../../redux/timeline_quantity/action';
@@ -7,6 +7,7 @@ import DatePicker from '../../components/timeline/datePicker';
 import moment from 'moment';
 import BarCharts from '../../components/timeline/barChart';
 import PickDevices from '../../components/timeline/pickMcid';
+import backgroundScreen from '../../publics/images/background.png';
 
 const dataX = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,0,1,2,3,4,5];
 const quantity = ({navigation}) => {
@@ -23,6 +24,7 @@ const quantity = ({navigation}) => {
     
 
     return (
+        <ImageBackground source={backgroundScreen} style={styles.picture}>
         <View style={styles.container}>
             <ScrollView>
             <Appbar.Header>
@@ -41,13 +43,20 @@ const quantity = ({navigation}) => {
             />
             </ScrollView>
         </View>
+        </ImageBackground>
     )
 }
 
 export default quantity;
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
+        backgroundColor: '#282f3ac7',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        position:'absolute',
     },
     title: {
         color:'#0b4645db',
@@ -55,5 +64,11 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         fontSize: 22,
         fontWeight: 'bold'
-    }
+    },
+    picture: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover',
+      },
 })

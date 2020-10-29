@@ -28,7 +28,7 @@ const ReportMonthly = ({navigation}) => {
                 <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Appbar.Content title="Monthly"/>
             </Appbar.Header>
-            <View>
+            <View >
               <PickYear
               year={year}
               setYear={setYear}/>
